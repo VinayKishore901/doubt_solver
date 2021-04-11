@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>doubts regarding webdev</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+ </head>
+<body>
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" href="https://qbq.com/15-reasons-to-ask-questions/">
+  	<img src="capture.png">
+  </a>
+
+  <!-- Links -->
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link mr-1" href="https://stackoverflow.com/">Stack Overflow</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link mr-1" href="https://github.com/">Github</a>
+    </li>
+
+     
+       
+    
+  </ul>
+</nav>
+  
+ 
+	 
+	 
+
+ 
+
+	<div class="banner">
+		<video autoplay muted loop>
+			<source src="videoplayback.mp4" type="video/mp4">
+		</video>
+		<div class="content">
+		<h1>CODE-CAFE</h1>
+		<p>Null all your doubts</p>
+	</div>
+	</div>
+
+	<div class="carausel">
+	<div id="demo" class="carousel slide" data-ride="carousel">
+  <ul class="carousel-indicators">
+    <li data-target="#demo" data-slide-to="0" class="active"></li>
+    <li data-target="#demo" data-slide-to="1"></li>
+    <li data-target="#demo" data-slide-to="2"></li>
+  </ul>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="img1.jpg" alt="Los Angeles" width="1100" height="500">
+      <div class="carousel-caption">
+        <h3>Got Doubt</h3>
+        <p>The best way to learn is to ask</p>
+      </div>   
+    </div>
+    <div class="carousel-item">
+      <img src="img2.jpg" alt="Chicago" width="1100" height="500">
+      <div class="carousel-caption">
+        <h3>Beginer</h3>
+        <p>YOU ARE AT RIGHT PLACE</p>
+      </div>   
+    </div>
+    <div class="carousel-item">
+      <img src="img3.jpg" alt="New York" width="1100" height="500">
+      <div class="carousel-caption">
+        <h3>DISCUSS</h3>
+        <p>MORE && MORE</p>
+      </div>   
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#demo" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+</div>
+</div>
+
+		<div class="v">
+		<div class="container mb-2">
+			<h1 class="text-center text-capatalize  pt-5">TYPE YOUR QUERY HERE</h1>
+			<hr class="w-25 mx-auto pt-5">
+		</div>
+	</div>
+
+<div class="for">
+<form action="action.php" method="post">
+  <div class="form-group w-50">
+    <label for="email">Email address:</label>
+    <input type="email" class="form-control" placeholder="Enter email" id="email" name="em">
+  </div>
+  <div class="form-group">
+    <label for="pwd">Question:</label>
+    <input type="text" class="form-control" placeholder="Question" id="ques" name="et">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+
+ 
+
+		<table>
+		<tr>
+			<th>S.no</th>
+			<th>Email</th>
+			<th>Question</th>
+		</tr>
+		
+		<?php
+		$conn = new mysqli('localhost','root','','dbms');
+if($conn->connect_error){
+	die('Connection Failed  :  '.$conn->connect_error);
+
+}else{
+	 
+	$query="SELECT * FROM question";
+	$data= mysqli_query($conn,$query);
+	$total= mysqli_num_rows($data);
+
+	if($total != 0)
+	{
+		 
+		while($result= mysqli_fetch_assoc($data))
+		{
+			echo "<tr>
+
+			 <td>".$result['sno']."</td>
+			 <td>".$result['email']."</td>
+			 <td>".$result['question']."</td>
+
+
+
+
+			</tr>";
+		}
+	}
+	else{
+		echo "No record found";
+	}
+
+}
+?>
+</table>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+</body>
+</html>
